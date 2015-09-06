@@ -4,12 +4,10 @@
 #
 #define debug_package %{nil}
 
-%define rel 1
-
 Summary:        KTNEF - an API for handling TNEF data
 Name:           ktnef
-Version: 15.08.0
-Release:        %mkrel %rel
+Version:	15.08.0
+Release:        1
 License:        GPLv2+
 Group:          System/Base
 Source0:        http://fr2.rpmfind.net/linux/KDE/stable/plasma/%{name}-%{version}.tar.xz
@@ -17,21 +15,19 @@ Source0:        http://fr2.rpmfind.net/linux/KDE/stable/plasma/%{name}-%{version
 URL:            https://www.kde.org/
 
 
-BuildRequires:  kf5-macros
-
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
 
-BuildRequires:  kf5-macros
-BuildRequires:  kdelibs4support-devel >= 5.12.0
-BuildRequires:  kcalcore-devel >= 4.79.0
-BuildRequires:  kcalutils-devel >= 4.79.0
-BuildRequires:  kcontacts-devel >= 4.91.0
+BuildRequires:  cmake(ECM)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5KDELibs4Support)
 
 BuildRequires:  boost-devel
 
-BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  sasl-devel
 
 BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
@@ -54,8 +50,8 @@ Group:        System/Libraries
 KTNEF - an API for handling TNEF data
 
 %files -n %libktnef
-%_kf5_libdir/libKF5Tnef.so.%{ktnef_major}*
-%_kf5_libdir/libKF5Tnef.so.5
+%_libdir/libKF5Tnef.so.%{ktnef_major}*
+%_libdir/libKF5Tnef.so.5
 
 #--------------------------------------------------------------------
 
@@ -73,11 +69,11 @@ This package contains header files needed if you wish to build applications
 based on %name.
 
 %files -n %ktnef_devel
-%_kf5_includedir/KTNEF
-%_kf5_includedir/*.h
-%_kf5_libdir/*.so
-%_kf5_libdir/cmake/KF5Tnef
-%_qt5_prefix/mkspecs/modules/*.pri
+%_includedir/KF5/KTNEF
+%_includedir/KF5/*.h
+%_libdir/*.so
+%_libdir/cmake/KF5Tnef
+%_libdir/qt5/mkspecs/modules/*.pri
 
 #--------------------------------------------------------------------
 
@@ -86,30 +82,8 @@ based on %name.
 %apply_patches
 
 %build
-%cmake_kf5
-%make
+%cmake_kde5
+%ninja
 
 %install
-%makeinstall_std -C build
-
-%find_lang --all %{name}5
-
-
-
-%changelog
-* Wed Aug 19 2015 neoclust <neoclust> 15.08.0-1.mga6
-+ Revision: 865972
-- New version 15.08.0
-
-* Wed Aug 12 2015 neoclust <neoclust> 15.07.90-2.mga6
-+ Revision: 863725
-- Plasma Mass Rebuild - Rebuild for new Plasma
-
-* Sun Aug 09 2015 neoclust <neoclust> 15.07.90-1.mga6
-+ Revision: 861785
-- New version 15.07.90
-
-* Wed Jul 29 2015 neoclust <neoclust> 15.07.80-1.mga6
-+ Revision: 858839
-- imported package ktnef
-
+%ninja_install -C build
