@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   ktnef-15.08.0.tar.xz: 06c8f23387d9ca378c43863b6970ddb4246d190d
+sources:
+  ktnef-15.08.1.tar.xz: 03a756f3a3050a5cb54f8e5d8011577536853cb2
