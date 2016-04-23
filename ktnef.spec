@@ -1,12 +1,6 @@
-#
-# Please do not update/rebuild/touch this package before asking first to mikala and/or neoclust
-# This package is part of the KDE Stack.
-#
-#define debug_package %{nil}
-
 Summary:        KTNEF - an API for handling TNEF data
 Name:           ktnef
-Version:	15.12.3
+Version:	16.04.0
 Release:	1
 License:        GPLv2+
 Group:          System/Base
@@ -43,12 +37,13 @@ KTNEF - an API for handling TNEF data
 
 #--------------------------------------------------------------------
 
-%define ktnef_major 4
+%define ktnef_major 5
 %define libktnef %mklibname kf5tnef %{ktnef_major}
 
 %package -n %libktnef
 Summary:      KTNEF - an API for handling TNEF data
 Group:        System/Libraries
+Obsoletes:    %mklibname kf5tnef 4
 
 
 %description -n %libktnef
@@ -56,7 +51,6 @@ KTNEF - an API for handling TNEF data
 
 %files -n %libktnef
 %_libdir/libKF5Tnef.so.%{ktnef_major}*
-%_libdir/libKF5Tnef.so.5
 
 #--------------------------------------------------------------------
 
