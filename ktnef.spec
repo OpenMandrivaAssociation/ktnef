@@ -1,6 +1,6 @@
 Summary:        KTNEF - an API for handling TNEF data
 Name:           ktnef
-Version:	16.12.2
+Version:	17.03.80
 Release:	1
 License:        GPLv2+
 Group:          System/Base
