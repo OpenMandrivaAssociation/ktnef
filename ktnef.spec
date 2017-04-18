@@ -1,6 +1,6 @@
 Summary:        KTNEF - an API for handling TNEF data
 Name:           ktnef
-Version:	17.03.80
+Version:	17.04.0
 Release:	1
 License:        GPLv2+
 Group:          System/Base
@@ -32,19 +32,21 @@ BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
 
+%define ktnef_major 5
+%define libktnef %mklibname kf5tnef %{ktnef_major}
+
+Requires: %libktnef = %{EVRD}
+
 %description
 KTNEF - an API for handling TNEF data
 
 #--------------------------------------------------------------------
 
-%define ktnef_major 5
-%define libktnef %mklibname kf5tnef %{ktnef_major}
-
 %package -n %libktnef
 Summary:      KTNEF - an API for handling TNEF data
 Group:        System/Libraries
 Obsoletes:    %mklibname kf5tnef 4
-
+Requires:     %{name} = %{EVRD}
 
 %description -n %libktnef
 KTNEF - an API for handling TNEF data
@@ -86,3 +88,6 @@ based on %name.
 
 %install
 %ninja_install -C build
+%find_lang libktnef5
+
+%files -f libktnef5.lang
