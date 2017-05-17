@@ -1,9 +1,13 @@
-Summary:        KTNEF - an API for handling TNEF data
-Name:           ktnef
+%define major 5
+%define libname %mklibname KF5Tnef %{major}
+%define devname %mklibname KF5Tnef -d
+
+Summary:	KTNEF - an API for handling TNEF data
+Name:		ktnef
 Version:	17.04.1
-Release:	1
-License:        GPLv2+
-Group:          System/Base
+Release:	2
+License:	GPLv2+
+Group:		System/Base
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -11,61 +15,57 @@ Group:          System/Base
 %define ftpdir stable
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
-URL:            https://www.kde.org/
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  cmake(ECM)
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarUtils)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  boost-devel
-BuildRequires:  sasl-devel
+URL:		https://www.kde.org/
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(KF5CalendarCore)
+BuildRequires:	cmake(KF5CalendarUtils)
+BuildRequires:	cmake(KF5Contacts)
+BuildRequires:	cmake(KF5KDELibs4Support)
+BuildRequires:	boost-devel
+BuildRequires:	sasl-devel
 BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
-
-%define ktnef_major 5
-%define libktnef %mklibname KF5Tnef %{ktnef_major}
-
-Requires: %{libktnef} = %{EVRD}
+Requires:	%{libname} = %{EVRD}
 
 %description
 KTNEF - an API for handling TNEF data.
 
 #--------------------------------------------------------------------
 
-%package -n %{libktnef}
-Summary:      KTNEF - an API for handling TNEF data
-Group:        System/Libraries
-Obsoletes:    %mklibname kf5tnef 4
-Obsoletes:    %mklibname kf5tnef 5
-Requires:     %{name} = %{EVRD}
+%package -n %{libname}
+Summary:	KTNEF - an API for handling TNEF data
+Group:		System/Libraries
+Obsoletes:	%{mklibname kf5tnef 4} < 17.04.0
+Obsoletes:	%{mklibname kf5tnef 5} < 17.04.0
+Provides:	%{mklibname kf5tnef 5} = 17.04.0
+Requires:	%{name} = %{EVRD}
 
-%description -n %{libktnef}
-KTNEF - an API for handling TNEF data
+%description -n %{libname}
+KTNEF - an API for handling TNEF data.
 
-%files -n %{libktnef}
-%{_libdir}/libKF5Tnef.so.%{ktnef_major}*
+%files -n %{libname}
+%{_libdir}/libKF5Tnef.so.%{major}*
 
 #--------------------------------------------------------------------
 
-%define ktnef_devel %mklibname KF5Tnef -d
+%package -n %{devname}
 
-%package -n %ktnef_devel
+Summary:	Devel stuff for %{name}
+Group:		Development/KDE and Qt
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{mklibname kf5tnef -d} < 17.04.0
+Provides:	%{mklibname kf5tnef -d} = 17.04.0
 
-Summary:        Devel stuff for %{name}
-Group:          Development/KDE and Qt
-Requires:       %{libktnef} = %{EVRD}
-Provides:       %{name}-devel = %{EVRD}
-Obsoletes:	%mklibname kf5tnef -d
-
-%description -n %{ktnef_devel}
+%description -n %{devname}
 This package contains header files needed if you wish to build applications
 based on %{name}.
 
-%files -n %{ktnef_devel}
+%files -n %{devname}
 %{_includedir}/KF5/KTNEF
 %{_includedir}/KF5/*.h
 %{_libdir}/*.so
@@ -75,7 +75,7 @@ based on %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q 
+%setup -q
 %apply_patches
 %cmake_kde5
 
