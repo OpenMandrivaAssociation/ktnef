@@ -5,7 +5,8 @@
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
 Version:	17.04.1
-Release:	2
+Release:	3
+Epoch:    3
 License:	GPLv2+
 Group:		System/Base
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
@@ -39,9 +40,9 @@ KTNEF - an API for handling TNEF data.
 %package -n %{libname}
 Summary:	KTNEF - an API for handling TNEF data
 Group:		System/Libraries
-Obsoletes:	%{mklibname kf5tnef 4} < 17.04.0
-Obsoletes:	%{mklibname kf5tnef 5} < 17.04.0
-Provides:	%{mklibname kf5tnef 5} = 17.04.0
+Obsoletes:	%{mklibname kf5tnef 4} < 3:17.04.0
+Obsoletes:	%{mklibname kf5tnef 5} < 3:17.04.0
+Provides:	%{mklibname kf5tnef 5} = 3:17.04.0
 Requires:	%{name} = %{EVRD}
 
 %description -n %{libname}
@@ -58,8 +59,8 @@ Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
 Requires:	%{libname} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
-Obsoletes:	%{mklibname kf5tnef -d} < 17.04.0
-Provides:	%{mklibname kf5tnef -d} = 17.04.0
+Obsoletes:	%{mklibname kf5tnef -d} < 3:17.04.0
+Provides:	%{mklibname kf5tnef -d} = 3:17.04.0
 
 %description -n %{devname}
 This package contains header files needed if you wish to build applications
