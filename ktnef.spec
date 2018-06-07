@@ -4,7 +4,7 @@
 
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
-Version:	 17.12.2
+Version:	 18.04.2
 Release:	1
 Epoch:      3
 License:	GPLv2+
@@ -88,3 +88,5 @@ based on %{name}.
 %find_lang libktnef5
 
 %files -f libktnef5.lang
+%{_sysconfdir}/xdg/ktnef.categories
+%{_sysconfdir}/xdg/ktnef.renamecategories
