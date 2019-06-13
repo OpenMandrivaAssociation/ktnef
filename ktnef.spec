@@ -5,7 +5,7 @@
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
 Version:	 19.04.2
-Release:	1
+Release:	2
 Epoch:      3
 License:	GPLv2+
 Group:		System/Base
@@ -76,7 +76,7 @@ based on %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1
 %apply_patches
 %cmake_kde5
 
