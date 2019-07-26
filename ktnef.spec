@@ -4,7 +4,7 @@
 
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
-Version:	19.04.3
+Version:	19.07.80
 Release:	1
 Epoch:      3
 License:	GPLv2+
@@ -88,5 +88,5 @@ based on %{name}.
 %find_lang libktnef5
 
 %files -f libktnef5.lang
-%{_sysconfdir}/xdg/ktnef.categories
-%{_sysconfdir}/xdg/ktnef.renamecategories
+%{_datadir}/qlogging-categories5/ktnef.categories
+%{_datadir}/qlogging-categories5/ktnef.renamecategories
