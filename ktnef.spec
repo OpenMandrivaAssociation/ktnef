@@ -4,7 +4,7 @@
 
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
-Version:	19.11.90
+Version:	19.12.0
 Release:	1
 Epoch:      3
 License:	GPLv2+
@@ -15,7 +15,7 @@ Group:		System/Base
 %else
 %define ftpdir stable
 %endif
-Source0:	http://download.kde.org/%{ftpdir}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{ftpdir}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 URL:		https://www.kde.org/
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
@@ -77,7 +77,6 @@ based on %{name}.
 
 %prep
 %autosetup -p1
-%apply_patches
 %cmake_kde5
 
 %build
