@@ -4,7 +4,7 @@
 
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
-Version:	19.12.3
+Version:	20.03.80
 Release:	1
 Epoch:      3
 License:	GPLv2+
