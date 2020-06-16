@@ -5,7 +5,7 @@
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
 Version:	20.04.2
-Release:	1
+Release:	2
 Epoch:      3
 License:	GPLv2+
 Group:		System/Base
@@ -30,7 +30,7 @@ BuildRequires:	sasl-devel
 BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
-Requires:	%{libname} = %{EVRD}
+Requires:	%{libname} >= %{version}
 
 %description
 KTNEF - an API for handling TNEF data.
@@ -43,7 +43,7 @@ Group:		System/Libraries
 Obsoletes:	%{mklibname kf5tnef 4} < 3:17.04.0
 Obsoletes:	%{mklibname kf5tnef 5} < 3:17.04.0
 Provides:	%{mklibname kf5tnef 5} = 3:17.04.0
-Requires:	%{name} = %{EVRD}
+Requires:	%{name} >= %{version}
 
 %description -n %{libname}
 KTNEF - an API for handling TNEF data.
