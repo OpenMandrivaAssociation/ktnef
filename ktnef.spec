@@ -4,7 +4,7 @@
 
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
-Version:	21.12.2
+Version:	22.03.80
 Release:	1
 Epoch:      3
 License:	GPLv2+
@@ -68,7 +68,6 @@ based on %{name}.
 
 %files -n %{devname}
 %{_includedir}/KF5/KTNEF
-%{_includedir}/KF5/*.h
 %{_libdir}/*.so
 %{_libdir}/cmake/KF5Tnef
 %{_libdir}/qt5/mkspecs/modules/*.pri
