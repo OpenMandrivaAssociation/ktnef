@@ -1,11 +1,12 @@
 %define major 5
-%define libname %mklibname KF5Tnef %{major}
-%define devname %mklibname KF5Tnef -d
+%define oldlibname %mklibname KF5Tnef 5
+%define libname %mklibname KPim5Tnef
+%define devname %mklibname KPim5Tnef -d
 
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
-Version:	22.12.3
-Release:	2
+Version:	23.03.90
+Release:	1
 Epoch:      3
 License:	GPLv2+
 Group:		System/Base
@@ -42,6 +43,7 @@ Summary:	KTNEF - an API for handling TNEF data
 Group:		System/Libraries
 Obsoletes:	%{mklibname kf5tnef 4} < 3:17.04.0
 Obsoletes:	%{mklibname kf5tnef 5} < 3:17.04.0
+Obsoletes:	%{oldlibname} < %{EVRD}
 Provides:	%{mklibname kf5tnef 5} = 3:17.04.0
 Requires:	%{name} >= %{version}
 
@@ -49,7 +51,7 @@ Requires:	%{name} >= %{version}
 KTNEF - an API for handling TNEF data.
 
 %files -n %{libname}
-%{_libdir}/libKF5Tnef.so.%{major}*
+%{_libdir}/libKPim5Tnef.so.%{major}*
 
 #--------------------------------------------------------------------
 
@@ -67,8 +69,9 @@ This package contains header files needed if you wish to build applications
 based on %{name}.
 
 %files -n %{devname}
-%{_includedir}/KF5/KTNEF
+%{_includedir}/KPim5/KTNEF
 %{_libdir}/*.so
+%{_libdir}/cmake/KPim5Tnef
 %{_libdir}/cmake/KF5Tnef
 %{_libdir}/qt5/mkspecs/modules/*.pri
 
