@@ -72,8 +72,8 @@ based on %{name}.
 %{_includedir}/KPim5/KTNEF
 %{_libdir}/*.so
 %{_libdir}/cmake/KPim5Tnef
-%{_libdir}/cmake/KF5Tnef
 %{_libdir}/qt5/mkspecs/modules/*.pri
+%optional %doc %{_docdir}/qt5/*
 
 #--------------------------------------------------------------------
 
