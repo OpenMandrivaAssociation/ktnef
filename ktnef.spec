@@ -5,7 +5,7 @@
 
 Summary:	KTNEF - an API for handling TNEF data
 Name:		ktnef
-Version:	23.04.3
+Version:	23.08.0
 Release:	1
 Epoch:      3
 License:	GPLv2+
@@ -23,7 +23,7 @@ BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5CalendarCore)
-BuildRequires:	cmake(KF5CalendarUtils)
+BuildRequires:	cmake(KPim5CalendarUtils)
 BuildRequires:	cmake(KF5Contacts)
 BuildRequires:	cmake(KF5KDELibs4Support)
 BuildRequires:	boost-devel
