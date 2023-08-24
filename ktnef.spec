@@ -31,6 +31,7 @@ BuildRequires:	sasl-devel
 BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
+BuildRequires:	doxygen
 Requires:	%{libname} >= %{version}
 
 %description
