@@ -32,6 +32,7 @@ BuildRequires:	libxml2-utils
 BuildRequires:	docbook-dtds
 BuildRequires:	docbook-style-xsl
 BuildRequires:	doxygen
+BuildRequires:	qt5-assistant
 Requires:	%{libname} >= %{version}
 
 %description
