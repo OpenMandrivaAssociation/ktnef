@@ -6,8 +6,8 @@
 %define devname %mklibname KPim6Tnef -d
 
 Summary:	KTNEF - an API for handling TNEF data
-Name:		plasma6-ktnef
-Version:	25.04.0
+Name:		ktnef
+Version:	25.04.1
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		System/Base
@@ -40,6 +40,10 @@ BuildRequires:	docbook-style-xsl
 BuildRequires:	doxygen
 BuildRequires:	qt6-qttools-assistant
 Requires:	%{libname} >= %{version}
+# Renamed 2025-05-25 after 6.0
+%rename plasma6-ktnef
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 KTNEF - an API for handling TNEF data.
@@ -50,6 +54,9 @@ KTNEF - an API for handling TNEF data.
 Summary:	KTNEF - an API for handling TNEF data
 Group:		System/Libraries
 Requires:	%{name} >= %{version}
+# Not a 1:1 replacement, but we need to get rid of old cruft...
+Obsoletes:	%{mklibname KF5Tnef 5}
+Obsoletes:	%{mklibname KPim5Tnef}
 
 %description -n %{libname}
 KTNEF - an API for handling TNEF data.
@@ -60,13 +67,12 @@ KTNEF - an API for handling TNEF data.
 #--------------------------------------------------------------------
 
 %package -n %{devname}
-
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
 Requires:	%{libname} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
-Obsoletes:	%{mklibname kf6tnef -d} < 3:17.04.0
-Provides:	%{mklibname kf6tnef -d} = 3:17.04.0
+# Not a 1:1 replacement, but we need to get rid of old cruft...
+Obsoletes:	%{mklibname -d KPim5Tnef}
 
 %description -n %{devname}
 This package contains header files needed if you wish to build applications
@@ -78,19 +84,6 @@ based on %{name}.
 
 #--------------------------------------------------------------------
 
-%prep
-%autosetup -p1 -n ktnef-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-%find_lang libktnef6
-
-%files -f libktnef6.lang
+%files -f %{name}.lang
 %{_datadir}/qlogging-categories6/ktnef.categories
 %{_datadir}/qlogging-categories6/ktnef.renamecategories
